@@ -72,6 +72,7 @@ const imageService = {
             }
 
             const createdImg = await Image.create(data)
+            // user tạo ra image không cần save image
             // await createdImg.setUsersSave(data.userId)
             // console.log(createdImg.__proto__)
             return 'ok'
@@ -108,7 +109,7 @@ const imageService = {
             }
 
             await image.destroy()
-            console.log(image.__proto__)
+            // console.log(image.__proto__)
             return 'ok'
         } catch (error) {
             throw error

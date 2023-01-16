@@ -32,7 +32,7 @@ const userService = {
             const user = await User.findByPk(userId)
 
             if (!user) {
-                throw new AppError(401, 'Invalid token')
+                throw new AppError(404, "user not found")
             }
 
             const totalSavedImage = await user.countSavedImages()
@@ -72,8 +72,9 @@ const userService = {
         const { name } = filter
         try {
             const user = await User.findByPk(userId)
+
             if (!user) {
-                throw new AppError(401, 'Invalid token')
+                throw new AppError(404, "user not found")
             }
 
             const totalCreatedImage = await user.countImages()

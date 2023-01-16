@@ -10,10 +10,10 @@ const upload = () => {
             if (!file) {
                 throw new AppError(400, 'Missing file')
             }
-            console.log()
+
             const url = `http://localhost:${configs.PORT}/${file.path
-                    .replace(/\\/g, '/')
-                    .replace('public/', '')
+                .replace(/\\/g, '/')
+                .replace('public/', '')
                 }`
 
             res.status(200).json(response(url))

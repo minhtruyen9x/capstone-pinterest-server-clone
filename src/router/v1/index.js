@@ -23,7 +23,7 @@ Router.get('/users/save-images/:id', authorization, userController.testImageSave
 Router.put('/users', authorization, userController.updateUser())
 
 // Upload image
-Router.post('/images/upload', upload.single("image"), uploadController())
+Router.post('/images/upload', authorization, upload.single("image"), uploadController())
 
 // Image
 Router.get('/images', imgController.getImage())

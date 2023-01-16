@@ -37,7 +37,7 @@ const authService = {
                 include: ['password']
             }
         })
-        console.log(password)
+        // console.log(password)
         if (!isUserExist) {
             throw new AppError(400, "email or password is not correct")
         }
