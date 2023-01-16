@@ -31,7 +31,7 @@ const imageService = {
                 images: data,
                 pagination: {
                     total,
-                    page: page || 1,
+                    page: page,
                     pageSize: pageSize
                 }
             }

@@ -1,6 +1,6 @@
 const { ValidationError, Op } = require("sequelize")
 const { AppError } = require("../helpers/error")
-const { User } = require("../models")
+const { User, Image } = require("../models")
 
 const userService = {
     updateUser: async (data) => {
@@ -30,28 +30,62 @@ const userService = {
         const { name } = filter
         try {
             const user = await User.findByPk(userId)
-
+            // console.log(user.__proto__)
             if (!user) {
-                throw new AppError(401, "Invalid token")
+                throw new AppError(401, 'Invalid token')
             }
 
-            const data = await user.getSavedImages()
-            // const data = await user.getImagesSave({
-            // {
-            //     include: {
-            //         association: 'savedImages',
-            //         where: {
-            //             name: {
-            //                 [Op.like]: name ? `%${name}%` : '%'
-            //             }
-            //         },
-            //         limit: Number(pageSize),
-            //         offset: (Number(page) - 1) * Number(pageSize) || 0
-            //     }
-            // }
-            // })
+            const totalSavedImage = await user.countSavedImages()
+            const data = await user.getSavedImages({
+                where: {
+                    name: {
+                        [Op.like]: name ? `%${name}%` : '%'
+                    },
+                },
+                limit: Number(pageSize),
+                offset: (Number(page) - 1) * Number(pageSize) || 0
+            })
+            console.log(data)
+            return {
+                data: data,
+                pagination: {
+                    total: totalSavedImage,
+                    page: page,
+                    pageSize: pageSize
+                }
+            }
+        } catch (error) {
+            throw error
+        }
+    },
+    getCreatedImageWithCondition: async (userId, pageConfig, filter) => {
+        const { page = 1, pageSize = 10 } = pageConfig
+        const { name } = filter
+        try {
+            const user = await User.findByPk(userId)
+            if (!user) {
+                throw new AppError(401, 'Invalid token')
+            }
 
-            return data
+            const totalCreatedImage = await user.countImages()
+            const data = await user.getImages({
+                where: {
+                    name: {
+                        [Op.like]: name ? `%${name}%` : '%'
+                    },
+                },
+                limit: Number(pageSize),
+                offset: (Number(page) - 1) * Number(pageSize) || 0
+            })
+
+            return {
+                data: data,
+                pagination: {
+                    total: totalCreatedImage,
+                    page: page,
+                    pageSize: pageSize
+                }
+            }
         } catch (error) {
             throw error
         }

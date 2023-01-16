@@ -20,10 +20,23 @@ const userController = {
     getSavedImage: () => {
         return async (req, res, next) => {
             try {
-                const { user } = res.locals
+                const { userId } = req.params
                 const { name, ...pageConfig } = req.query
 
-                const data = await userService.getSavedImageWithCondition(user.id, pageConfig, { name })
+                const data = await userService.getSavedImageWithCondition(userId, pageConfig, { name })
+                res.status(200).json(response(data))
+            } catch (error) {
+                next(error)
+            }
+        }
+    },
+    getCreatedImage: () => {
+        return async (req, res, next) => {
+            try {
+                const { userId } = req.params
+                const { name, ...pageConfig } = req.query
+
+                const data = await userService.getCreatedImageWithCondition(userId, pageConfig, { name })
                 res.status(200).json(response(data))
             } catch (error) {
                 next(error)
