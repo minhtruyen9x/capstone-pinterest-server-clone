@@ -28,15 +28,18 @@ Image.belongsToMany(User, {
     as: 'usersSave'
 })
 
+// Fix tạm để query savedImage của user bằng quan hệ 1-n thay vì dùng quan hệ n-n như trên
+Image.hasMany(SaveImage, {
+    foreignKey: 'imageId',
+})
 
-// Mối quan hệ n-n
-// User.belongsToMany(Image, {
-//     through: Comment,
-//     foreignKey: 'userId',
-//     as: 'commentUsers',
-//     uniqueKey:false
-// })
+SaveImage.belongsTo(Image, {
+    foreignKey: 'imageId',
+    as: 'originImage'
+})
 
+
+// Mối quan hệ 1-n
 User.hasMany(Comment, {
     foreignKey: 'userId',
     as: 'comments'
@@ -46,7 +49,7 @@ Comment.belongsTo(User, {
     as: 'owner'
 })
 
-
+// Mối quan hệ 1-n
 Image.hasMany(Comment, {
     foreignKey: 'imageId',
     as: 'comments'
@@ -55,11 +58,7 @@ Comment.belongsTo(Image, {
     foreignKey: "imageId",
     as: 'originImage'
 })
-// Image.belongsToMany(User, {
-//     through: Comment,
-//     foreignKey: 'imageId',
-//     as: 'userComments'
-// })
+
 
 
 module.exports = {

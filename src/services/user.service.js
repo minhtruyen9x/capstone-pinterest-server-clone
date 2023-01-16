@@ -1,6 +1,6 @@
 const { ValidationError, Op } = require("sequelize")
 const { AppError } = require("../helpers/error")
-const { User, Image } = require("../models")
+const { User, Image, SaveImage } = require("../models")
 
 const userService = {
     updateUser: async (data) => {
@@ -30,22 +30,31 @@ const userService = {
         const { name } = filter
         try {
             const user = await User.findByPk(userId)
-            // console.log(user.__proto__)
+
             if (!user) {
                 throw new AppError(401, 'Invalid token')
             }
 
             const totalSavedImage = await user.countSavedImages()
-            const data = await user.getSavedImages({
+
+            // Fix tạm query saved image của user bằng cách dùng phuong thức findAll thông thường
+            const data = await SaveImage.findAll({
                 where: {
-                    name: {
-                        [Op.like]: name ? `%${name}%` : '%'
-                    },
+                    userId
+                },
+                include: {
+                    association: 'originImage',
+                    include: 'owner'
+                },
+                attributes: {
+                    exclude: ["imageId", 'userId']
                 },
                 limit: Number(pageSize),
                 offset: (Number(page) - 1) * Number(pageSize) || 0
             })
-            console.log(data)
+
+            // console.log(user.__proto__)
+
             return {
                 data: data,
                 pagination: {

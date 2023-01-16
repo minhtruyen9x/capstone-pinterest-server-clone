@@ -79,7 +79,6 @@ const imageService = {
             throw error
         }
     },
-
     saveImage: async (userId, imageId) => {
         try {
             const user = await User.findByPk(userId)
@@ -97,7 +96,6 @@ const imageService = {
             throw error
         }
     },
-
     deleteImage: async (userId, imageId) => {
         try {
             const image = await Image.findByPk(imageId)
