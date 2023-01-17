@@ -6,6 +6,10 @@ const { User } = require("../models")
 const extractTokenFromHeader = (headers) => {
     const bearerToken = headers.authorization
 
+    if (!bearerToken) {
+        throw new AppError(401, 'Token not found')
+    }
+
     const [prefix, token] = bearerToken.split(' ')
 
     if (prefix !== "Bearer") {

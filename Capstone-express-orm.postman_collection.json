@@ -1,0 +1,581 @@
+{
+	"info": {
+		"_postman_id": "2245af2a-4cd8-4ce6-b00b-a961ce5ddf4b",
+		"name": "Capstone-express-orm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21467074"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"minhtruyen@gmail.com\",\r\n  \"password\": \"11111\",\r\n  \"name\": \"test@gmail.com\",\r\n  \"age\":\"11\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/register",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibWluaHRydXllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzM5MzExOTgsImV4cCI6MTY3Mzk3NDM5OH0.tDqq_jig1IK_Ulvka6r8aVUUopacLAq0xUyekPP7gS4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"minhtruyen@gmail.com\",\r\n  \"password\": \"11111\",\r\n  \"name\": \"update lai ten ne\",\r\n  \"age\":\"11\",\r\n  \"avatar\":\"http://localhost:3000/images/1673931758524-609607451-avatar-gau-cute.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/users",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibWluaHRydXllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzM5MzExOTgsImV4cCI6MTY3Mzk3NDM5OH0.tDqq_jig1IK_Ulvka6r8aVUUopacLAq0xUyekPP7gS4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/users/profiles",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"users",
+						"profiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"minhtruyen@gmail.com\",\r\n  \"password\": \"11111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/login",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibWluaHRydXllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzM5MzExOTgsImV4cCI6MTY3Mzk3NDM5OH0.tDqq_jig1IK_Ulvka6r8aVUUopacLAq0xUyekPP7gS4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/dell/Downloads/avatar-gau-cute.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/images/upload",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"images",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibWluaHRydXllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzM5MzExOTgsImV4cCI6MTY3Mzk3NDM5OH0.tDqq_jig1IK_Ulvka6r8aVUUopacLAq0xUyekPP7gS4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"hinh 32\",\r\n  \"path\": \"http://localhost:3000/images/1673932430619-213289004-avatar-gau-cute.jpg\",\r\n  \"desc\": \"tao hinh dc ne\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/images",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibWluaHRydXllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzM5MzExOTgsImV4cCI6MTY3Mzk3NDM5OH0.tDqq_jig1IK_Ulvka6r8aVUUopacLAq0xUyekPP7gS4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/images/16",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"images",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Image (has filter and pagination)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/images?name&page=1&pageSize=10",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"images"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Image By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/images/20",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"images",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get savedImage (has filter and pagination)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/users/10/saved-images?name&page=1&pageSize=10",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"users",
+						"10",
+						"saved-images"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get createdImage (has filter and pagination",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/users/10/created-images?name&page=1&pageSize=10",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"users",
+						"10",
+						"created-images"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibWluaHRydXllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzM5MzExOTgsImV4cCI6MTY3Mzk3NDM5OH0.tDqq_jig1IK_Ulvka6r8aVUUopacLAq0xUyekPP7gS4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"hinh 32\",\r\n  \"path\": \"http://localhost:3000/images/1673932430619-213289004-avatar-gau-cute.jpg\",\r\n  \"desc\": \"tao hinh dc ne\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/images/20",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"images",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comment by Image ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/comments/images/20",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"comments",
+						"images",
+						"20"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibWluaHRydXllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzM5MzExOTgsImV4cCI6MTY3Mzk3NDM5OH0.tDqq_jig1IK_Ulvka6r8aVUUopacLAq0xUyekPP7gS4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"description\":\"comment ne\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/comments/images/20",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"comments",
+						"images",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Image saved yet",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibWluaHRydXllbkBnbWFpbC5jb20iLCJpYXQiOjE2NzM5MzExOTgsImV4cCI6MTY3Mzk3NDM5OH0.tDqq_jig1IK_Ulvka6r8aVUUopacLAq0xUyekPP7gS4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CAPSTONE-EXPRESS-ORM}}/users/save-images/20",
+					"host": [
+						"{{CAPSTONE-EXPRESS-ORM}}"
+					],
+					"path": [
+						"users",
+						"save-images",
+						"20"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

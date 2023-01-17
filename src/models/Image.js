@@ -20,7 +20,8 @@ const Image = sequelize.define('Image', {
     path: {
         type: DataTypes.STRING(255),
         allowNull: false,
-        field: 'duong_dan'
+        field: 'duong_dan',
+        unique: true
     },
     desc: {
         type: DataTypes.STRING(255),
