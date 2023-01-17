@@ -2,6 +2,7 @@ require('dotenv').config()
 const configs = {
     PORT: process.env.PORT,
     SECRET_KEY: process.env.SECRET_KEY,
+    DOMAIN_NAME: process.env.DOMAIN_NAME,
 
     DB_NAME: process.env.DB_NAME,
     DB_USER: process.env.DB_USER,

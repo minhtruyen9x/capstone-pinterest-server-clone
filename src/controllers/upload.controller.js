@@ -11,10 +11,16 @@ const upload = () => {
                 throw new AppError(400, 'Missing file')
             }
 
-            const url = `http://localhost:${configs.PORT}/${file.path
-                .replace(/\\/g, '/')
-                .replace('public/', '')
+            const url = configs.DOMAIN_NAME ?
+                `${configs.DOMAIN_NAME}/${file.path
+                    .replace(/\\/g, '/')
+                    .replace('public/', '')
+                }` :
+                `http://localhost:${configs.PORT}/${file.path
+                    .replace(/\\/g, '/')
+                    .replace('public/', '')
                 }`
+
 
             res.status(200).json(response(url))
         } catch (error) {
